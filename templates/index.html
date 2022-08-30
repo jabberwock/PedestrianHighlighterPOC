@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Person Detection</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            color: rgb(240, 240, 240);
+            font-family: Verdana, Tahoma, Sans-Serif;
+            background-color: rgb(44, 44, 44);
+        }
+        h3 {
+            line-height: 2em;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .video {
+            width: {{width}}px;
+            height: {{height}}px;
+            margin: 0 auto;
+            box-shadow: 0 10px 10px rgb(20, 20, 20);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <h3>Live Streaming</h3>
+        <div class="video">
+            <img width="{{width}}" height="{{height}}" src="{{ url_for('video_feed') }}" width="100%">
+        </div>
+</div>
+</body>
+</html>
