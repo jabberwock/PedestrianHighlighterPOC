@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 from flask import Flask, render_template, Response
-import io
 import cv2
 import numpy as np
 import os
