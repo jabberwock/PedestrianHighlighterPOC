@@ -15,8 +15,8 @@ hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 """
 Feel free to set the width and height as desired:
 """
-width =  1024  # in pixels
-height = 768   # in pixels
+width = 1024  # in pixels
+height = 768  # in pixels
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, height)
 
@@ -51,7 +51,12 @@ def gen_frames():
         closing = cv2.morphologyEx(dilated, cv2.MORPH_CLOSE, kernel)
 
         # Detecting persons using person cascade
-        persons,_ = hog.detectMultiScale(closing, winStride=(4, 4), padding=(4, 4), scale=1.05)
+        persons, _ = hog.detectMultiScale(
+                            closing,
+                            winStride=(4, 4),
+                            padding=(4, 4),
+                            scale=1.05
+                        )
 
         # Reset person counter
         person_counter = 0
@@ -78,8 +83,9 @@ def gen_frames():
             thickness = 3
             line_type = 2
 
-            # place text on rendered image 
-            cv2.putText(image_arr_color, f'{person_counter} person(s) detected.',
+            # place text on rendered image
+            cv2.putText(image_arr_color,
+                        f'{person_counter} person(s) detected.',
                         bottom_left_text_corner,
                         font,
                         font_scale,
@@ -116,5 +122,4 @@ def video_feed():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
-
+    app.run(debug=False, host='0.0.0.0')
