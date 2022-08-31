@@ -62,13 +62,20 @@ def gen_frames():
         person_counter = 0
 
         for (x, y, w, h) in persons:
-            # increment the person counter
-            person_counter = person_counter + 1
+            """
+            Each object in this loop will be in the form of
+            x coord, y cord, width, height - which are used here to
+            draw around the detected object.
+            """
+
+            person_counter += 1  # increment the person counter
+
             """
             Loop through identified persons and draw rectangles around them:
             Color is specified below:
             """
             highlight_color = (0, 255, 0)  # B, G, R
+
             cv2.rectangle(
                 image_arr_color,
                 (x, y), (x+w, y+h),
